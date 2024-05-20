@@ -1,23 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+import Home from './components/Home.js';
+import Footer from './components/Footer.js';
+import Services from './components/Services.js';
+import About from './components/About.js';
+import Contact from './components/Contact.js';
+import AuthProvider from './components/Auth.js';
+import { Route, Routes } from 'react-router-dom';
+import Navbar from './components/Navbar.js';
+import SignIn from './components/SignIn.js';
+import SignUp from './components/SignUp.js';
+import DashBoard from './components/DashBoard.js';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <AuthProvider>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/service" element={<Services />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact/>}/>
+          <Route path="/Dashboard" element={<DashBoard />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/logout" element={<Home />} />
+          <Route path="/signup" element={<SignUp />} />
+        </Routes>
+        <Footer/>
+      </AuthProvider>
     </div>
   );
 }

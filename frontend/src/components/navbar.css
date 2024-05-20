@@ -1,0 +1,19 @@
+.header-nav{
+    padding :32px 64px;
+    background-color: #38383B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 50px;
+    padding-right: 50px;
+    font-size: 20px;
+}
+.header-nav a{
+    color: white;
+    margin-right: 16px;
+    text-decoration: none;
+}
+.header-nav a.active{
+    font-weight: 800;
+    font: white;
+}
