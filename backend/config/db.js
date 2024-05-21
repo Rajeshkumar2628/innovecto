@@ -5,4 +5,4 @@ const connectDb=()=>{
         console.log("MongoDB is Connected Successfully");
     })
 }
-module.connect=connectDb
+module.exports=connectDb

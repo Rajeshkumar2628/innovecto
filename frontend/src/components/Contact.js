@@ -8,7 +8,7 @@ export default function Contact() {
     const [ques, setQues] = useState('')
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post(`http://localhost:3001/contact/post`, { name: name, clg: clg, email: email, phone: phno, ques: ques })
+        axios.post(`http://localhost:3001/contact/post`, { name: name, clg: clg, email: email, phone: phno, question: ques })
             .then(res => console.log(res))
             .catch(err => console.log(err))
     }

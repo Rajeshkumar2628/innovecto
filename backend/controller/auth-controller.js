@@ -3,8 +3,8 @@ const{v4:uuidv4}=require('uuid')
 const bcrypt=require('bcryptjs')
 const nodemailer=require('nodemailer')
 
-exports.SIgnUp=async(req,res)=>{
-    const{email,password,username,clg}=req.body
+exports.SignUp=async(req,res)=>{
+    const{username,clg,email,phone,password}=req.body
     let user=await UserModel.findOne({email})
     if(user){
         return res.status(400).json({message:"Email already registered"})
@@ -16,7 +16,7 @@ exports.SIgnUp=async(req,res)=>{
     const hashPassword=await bcrypt.hash(password,salt)
 
     user=new UserModel({
-        username,clg,email,password:hashPassword,activationCode
+        username,clg,email,phone,password:hashPassword,activationCode
     })
 
     await user.save()
@@ -30,7 +30,7 @@ exports.SIgnUp=async(req,res)=>{
         }
     })
 
-    const activationLink=`http://localhost:${process.env.PORT}/auth/activate/${activationCode}`
+    const activationLink=`http://localhost:${process.env.PORT}/user/activate/${activationCode}`
 
     const mailOptions={
         from:"process.env.EMAIL_USER",
@@ -48,3 +48,29 @@ exports.SIgnUp=async(req,res)=>{
         }
     })
 }
+    exports.activate=async(req,res)=>{
+        const{activationCode}=req.params
+        let user=await UserModel.findOne({activationCode})
+        if(!user){
+            res.status(500).json({message:"cannot sent activatiton link"})
+        }
+        user.isActivated=true
+        user.save()
+        res.status(200).json({message:"Account Activated Successfully"})
+    }
+
+    exports.signin=async(req,res)=>{
+        const{email,password}=req.body
+        let user=await UserModel.findOne({email})
+        if(!user){
+            return res.status(400).json({message:"Email not found"})
+        }
+        const isMatching=await bcrypt.compare(password,user.password)
+        if(!isMatching){
+            return res.status(400).json({message:"Password incorrect"})
+        }
+        if(user.isActivated){
+            return res.status(400).json({message:"Email is not verfied please verify to continue"})
+        }
+        return res.status(200).json({message:"Login Successfull",user})
+    }

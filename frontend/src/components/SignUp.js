@@ -9,8 +9,8 @@ export default function SignUp() {
     const [password, setPassword] = useState('')
     const navigate = useNavigate()
     const handleSubmit = () => {
-        axios.post(`http://localhost:3001/users/post`, { username: name, password: password, email: email })
-            .then(navigate('/Dashboard'))
+        axios.post(`http://localhost:3001/user/signup`, { username: name, clg:clg, email: email,phone:phno, password: password, })
+            .then(navigate('/signin'))
             .catch(err => alert('error'))
 
     }

@@ -12,7 +12,7 @@ export default function SignIn() {
     const auth = useAuth()
     const check = (e) => {
         e.preventDefault()
-        axios.get(`http://localhost:3001/users/get/${email}`)
+        axios.get(`http://localhost:3001/user/signin/${email}`)
             .then(res => {
                 console.log(res)
                 if (res.data[0]?.email) {

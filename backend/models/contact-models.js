@@ -5,11 +5,10 @@ const userSchema=new mongoose.Schema({
     clg:{type:String,required:true},
     email:{type:String,required:true,unique:true},
     phone:{type:String,required:true},
-    password:{type:String,required:true},
-    activationCode:{type:String,required:true,default:null},
-    isActivated:{type:Boolean,required:true,default:false}
+    question:{type:String,required:true}
 })
 
-const UserModel=mongoose.model('UserSignupData',userSchema)
+const UserModel=mongoose.model('ContactusData',userSchema)
 
 module.exports=UserModel
+
