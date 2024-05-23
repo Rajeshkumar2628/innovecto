@@ -20,6 +20,7 @@ export default function QuizQuestions() {
   const [correctAnswer, setCorrectAnswer] = useState(null);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [showNextButton, setShowNextButton] = useState(false);
+  const[choice,setChoice]=useState('')
 
   const startQuiz = () => {
     setCurrentQuestionIndex(0);
@@ -68,6 +69,13 @@ export default function QuizQuestions() {
   const showScore = () => {
     resetState();
     setQuestionText(`You scored ${score} out of ${questions.length}!`);
+    if(score>7){
+      setChoice('You are good in java coding you can select Java Stack Developer')
+    } else if(score>5){
+      setChoice('You are good in java coding you can select python Stack Developer')
+    } else{
+      setChoice('You can select Digital Marketing')
+    }
   };
 
   useEffect(() => {

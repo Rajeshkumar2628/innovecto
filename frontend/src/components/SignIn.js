@@ -2,6 +2,7 @@ import React, {  useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from './Auth';
+import './home.css'
 
 export default function SignIn() {
     const [email, setEMail] = useState('')
@@ -18,7 +19,7 @@ export default function SignIn() {
                 if (res.data[0]?.email) {
                     if (res.data[0]?.password === password) {
                         setMessage('')
-                        navigate('/Dashboard')
+                        navigate('/quiz')
                         auth.login(res.data[0]?.username)
                     }
                     else {
@@ -34,17 +35,19 @@ export default function SignIn() {
     }
 
 return (
-    <div className='abc-in'>
-        <form className='bcd-in' onSubmit={check}>
-            <h1>Login page</h1>
+    <div className='main'>
+        <form onSubmit={check}>
+            <div><h3>Login page</h3></div>
+            <div>
             <label>Email</label>
             <input type='email' onChange={(e) => {
                 setEMail(e.target.value)
-            }} /><br></br>
+            }} /> </div><br></br>
+            <div>
             <label>Password</label>
             <input type='password' onChange={(e) => {
                 setPassword(e.target.value)
-            }} /><br></br>
+            }} /></div><br></br>
             <button className='log' type='submit'>Log in</button>
         </form><br></br>
         {errMsg}

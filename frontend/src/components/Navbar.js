@@ -14,6 +14,7 @@ export default function Navbar() {
         {!auth.user &&<NavLink to='/signin'><div>SignIn</div></NavLink>}
         {!auth.user &&<NavLink to='/signup'><div>SignUp</div></NavLink>}
         {auth.user && <NavLink to='/dashboard'><div>DashBoard</div></NavLink>}
+        {auth.user && <NavLink to='/quiz'><div>Quiz</div></NavLink>}
         {auth.user && <NavLink to='/'><div><button className='merriweather-light' onClick={()=>{auth.logout();navigate('/')}}>Logout</button></div> </NavLink>}
     </nav>
   )
