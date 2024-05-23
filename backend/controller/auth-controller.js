@@ -22,13 +22,17 @@ exports.SignUp=async(req,res)=>{
     await user.save()
 
     const transport=nodemailer.createTransport({
-        host:"smtp.gmail.com",
-        port:587,
+        host:"smtp.zoho.in",
+        port:465,
+        secure: true,
         auth:{
             user:process.env.EMAIL_USER,
             pass:process.env.EMAIL_PASS
         }
     })
+
+    await transport.verify();
+    console.log('SMTP server is ready to take messages');
 
     const activationLink=`http://localhost:${process.env.PORT}/user/activate/${activationCode}`
 

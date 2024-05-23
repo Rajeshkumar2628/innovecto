@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import questions from "./QuizQues";
-import './quiz.css'
-
+// import './style.css'
 
 
 function shuffle(array) {
@@ -96,7 +95,7 @@ export default function QuizQuestions() {
 
   return (
     <div className="app">
-      <div className="header"><h1>Simple Quiz</h1></div>
+      <h1>Simple Quiz</h1>
       <div className="quiz">
         <h2 id="question">{questionText}</h2>
         <div id="answer-buttons">
@@ -112,10 +111,11 @@ export default function QuizQuestions() {
             </button>
           ))}
         </div>
-        
+        { showNextButton && (
           <button id="next-button" onClick={handleNextButton}>
             Next
           </button>
+        )}
       </div>
     </div>
   );

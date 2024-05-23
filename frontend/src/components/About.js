@@ -35,7 +35,7 @@ export default function About() {
                     <img src="Screenshot 2024-05-22 185015.png"/>
                     <div class='CEO'>
                         <h1>Rajesh Kumar, CEO</h1>
-                        <h3>Our founder and chief visionary, Rajesh, is passionate about transforming education. She is involved in every aspect of the platform's development, from content creation to marketing strategies.</h3>
+                        <h3>Our founder and chief visionary, Rajesh, is passionate about transforming education. He is involved in every aspect of the platform's development, from content creation to marketing strategies.</h3>
                     </div>
                     </div>
                     <div class="credit_2">

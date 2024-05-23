@@ -73,7 +73,7 @@ export default function Home() {
 
     <CardGroup class="cardgroup_2">
     <Card >
-        <Card.Body>
+        <Card.Body> 
             <Card.Text>
                 <h1>12</h1>
                 <h3>Interactive features</h3>
