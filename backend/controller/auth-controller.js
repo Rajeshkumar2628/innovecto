@@ -73,7 +73,7 @@ exports.SignUp=async(req,res)=>{
         if(!isMatching){
             return res.status(400).json({message:"Password incorrect"})
         }
-        if(user.isActivated){
+        if(!user.isActivated){
             return res.status(400).json({message:"Email is not verfied please verify to continue"})
         }
         return res.status(200).json({message:"Login Successfull",user})

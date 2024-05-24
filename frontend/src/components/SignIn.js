@@ -13,24 +13,20 @@ export default function SignIn() {
     const auth = useAuth()
     const check = (e) => {
         e.preventDefault()
-        axios.get(`http://localhost:3001/user/signin/${email}`)
+        axios.post(`http://localhost:3001/user/signin/`,{email,password})
             .then(res => {
                 console.log(res)
-                if (res.data[0]?.email) {
-                    if (res.data[0]?.password === password) {
+                console.log(res.data.user.password)
+                console.log(password)
+                if (res.status===200) {
                         setMessage('')
                         navigate('/quiz')
-                        auth.login(res.data[0]?.username)
-                    }
+                        auth.login(res.data.user?.username)
+                }
                     else {
                         setMessage("Incorrect password")
                     }
-                }
-                else {
-                    setMessage('Email not found')
-                }
-
-            })
+                })
             .catch(err => console.log(err))
     }
 
