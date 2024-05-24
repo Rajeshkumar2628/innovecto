@@ -22,23 +22,23 @@ export default function Contact() {
     <form onSubmit={handleSubmit}>
         <div class="name">
         <label>Name</label>
-        <input type='text' value={name} onChange="(e) => setName(e.target.value)" placeholder="Name..." />
+        <input type='text' value={name} onChange={(e) => setName(e.target.value)} placeholder="Name..." />
         </div>
         <div class="college">
         <label>College</label>
-        <input type='text' value={clg} onChange="(e) => setClg(e.target.value)" placeholder="College..." />
+        <input type='text' value={clg} onChange={(e) => setClg(e.target.value)} placeholder="College..." />
         </div>
         <div class="email">
         <label>Email</label>
-        <input type='email' value={email} onChange="(e) => setEmail(e.target.value)" placeholder="Email..." />
+        <input type='email' value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email..." />
         </div>
         <div class="number">
         <label>Phone Number</label>
-        <input type='text' value={phno} onChange="(e) => setPhno(e.target.value)" placeholder="Phone number" />
+        <input type='text' value={phno} onChange={(e) => setPhno(e.target.value)} placeholder="Phone number" />
         </div>
         <div class="question">
         <label>Question</label>
-        <textarea value={ques} onChange="(e) => setQues(e.target.value)"></textarea>
+        <textarea value={ques} onChange={(e) => setQues(e.target.value)}></textarea>
         </div>
         <button type='submit'>Submit</button>
     </form>
