@@ -7,8 +7,7 @@ export default function Contact() {
     const [email, setEmail] = useState('')
     const [phno, setPhno] = useState('')
     const [ques, setQues] = useState('')
-    const handleSubmit = (e) => {
-        e.preventDefault()
+    const handleSubmit = () => {
         axios.post(`http://localhost:3001/contact/post`, { name: name, clg: clg, email: email, phone: phno, question: ques })
             .then(res => console.log(res))
             .catch(err => console.log(err))
