@@ -102,7 +102,7 @@ export default function QuizQuestions() {
           {choices.map((choice, index) => (
             <button
               key={index}
-              className={`btn ${selectedAnswer === index ? (choice.answer ? "correct" : "incorrect") : ""}`}
+              className={`btn ${selectedAnswer === index ? (choice.answer ? "correct bg-success" : "incorrect bg-danger") : ""}`}
               onClick={() => selectChoice(choice.answer, index)}
               aria-label={choice.text}
               disabled={selectedAnswer !== null}

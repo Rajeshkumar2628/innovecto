@@ -20,7 +20,7 @@ export default function SignIn() {
                 console.log(password)
                 if (res.status===200) {
                         setMessage('')
-                        navigate('/quiz')
+                        navigate('/dashboard')
                         auth.login(res.data.user?.username)
                 }
                     else {

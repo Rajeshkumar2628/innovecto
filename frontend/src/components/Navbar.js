@@ -7,10 +7,10 @@ export default function Navbar() {
     const navigate = useNavigate()
   return (
     <nav className='header-nav'>
-        <NavLink to='/'><div>Home</div></NavLink>
-        <NavLink to='/about'><div>About</div></NavLink>
-        <NavLink to='/service'><div>Service</div></NavLink>
-        <NavLink to='/contact'><div>Contact</div></NavLink>
+        {!auth.user &&<NavLink to='/'><div>Home</div></NavLink>}
+        {!auth.user &&<NavLink to='/about'><div>About</div></NavLink>}
+        {!auth.user &&<NavLink to='/service'><div>Service</div></NavLink>}
+        {!auth.user &&<NavLink to='/contact'><div>Contact</div></NavLink>}
         {!auth.user &&<NavLink to='/signin'><div>SignIn</div></NavLink>}
         {!auth.user &&<NavLink to='/signup'><div>SignUp</div></NavLink>}
         {auth.user && <NavLink to='/dashboard'><div>DashBoard</div></NavLink>}

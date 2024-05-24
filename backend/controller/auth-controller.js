@@ -37,20 +37,41 @@ exports.SignUp=async(req,res)=>{
     const activationLink=`http://localhost:${process.env.PORT}/user/activate/${activationCode}`
 
     const mailOptions={
-        from:"process.env.EMAIL_USER",
+        from:process.env.EMAIL_USER,
         to:email,
-        subject:`Verify your account ${activationLink}`
+        subject:`Verify your account ${activationLink}`,
+        text: `Please click on the following link to activate your account: ${activationLink}`
 
     }
 
-    transport.sendMail(mailOptions,(err,info)=>{
-        if(err){
-            return res.status(500).json({message:"Cannot send Activation link"})
-        }
-        else {
-            return res.status(200).json({message:"Activation Link sent to your email"})
-        }
-    })
+    // transport.sendMail(mailOptions,(err,info)=>{
+    //     if(err){
+    //         console.error('Error sending email:', err);
+    //         return res.status(500).json({message:"Cannot send Activation link"})
+    //     }
+    //     else {
+    //         return res.status(200).json({message:"Activation Link sent to your email"})
+    //     }
+    // })
+    const sendMail = (options) => {
+        return new Promise((resolve, reject) => {
+            transport.sendMail(options, (err, info) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(info);
+                }
+            });
+        });
+    };
+
+    try {
+        await sendMail(mailOptions);
+        return res.status(200).json({ message: "Activation Link sent to your email" });
+    } catch (err) {
+        console.error('Error sending email:', err);
+        return res.status(500).json({ message: "Cannot send Activation link" });
+    }
 }
     exports.activate=async(req,res)=>{
         const{activationCode}=req.params

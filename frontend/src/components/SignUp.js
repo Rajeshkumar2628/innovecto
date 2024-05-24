@@ -11,7 +11,8 @@ export default function SignUp() {
     const navigate = useNavigate()
     const handleSubmit = () => {
         axios.post(`http://localhost:3001/user/signup`, { username: name, clg:clg, email: email,phone:phno, password: password, })
-            .then(navigate('/signin'))
+            .then(alert('Activation sent to your mail id please verify to login'),
+            navigate('/signin'))
             .catch(err => alert('error'))
 
     }

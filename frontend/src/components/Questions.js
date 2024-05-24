@@ -77,7 +77,7 @@ export default function QuizQuestions() {
 
   const showScore = () => {
     resetState();
-    setQuestionText(`You scored ${score} out of ${questions.length}! \n ${choice}`);
+    setQuestionText(`You scored ${score} out of ${questions.length}! ${choice}`);
   };
 
   const showPreference=()=>{
@@ -112,10 +112,12 @@ export default function QuizQuestions() {
             </button>
           ))}
         </div>
-        
-          <button id="next-button" onClick={handleNextButton}>
+        ({questionText!==questionText.length-1}?<button id="next-button" onClick={handleNextButton}>
             Next
-          </button>
+          </button>:<button id="next-button" onClick={handleNextButton}>
+            Next
+          </button>)
+          
       </div>
     </div>
   );
